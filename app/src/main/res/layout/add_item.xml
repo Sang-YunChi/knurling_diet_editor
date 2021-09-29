@@ -14,10 +14,10 @@
         android:orientation="vertical"
         android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
-            android:text="Add the User Information"
+            android:text="Add the Information"
             android:textStyle="bold"
             android:textSize="19sp"
             android:textColor="@color/white"
@@ -70,6 +70,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <EditText
+            android:id="@+id/foodInfo"
+            android:hint="당신이 먹은 음식을 기록해주세요"
+            android:textColor="@color/purple_500"
+            android:background="@drawable/shape_background"
+            android:padding="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
