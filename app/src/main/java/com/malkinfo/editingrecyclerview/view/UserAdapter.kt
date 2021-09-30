@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.FirebaseDatabase
 import com.malkinfo.editingrecyclerview.R
 import com.malkinfo.editingrecyclerview.model.UserData
@@ -43,14 +41,17 @@ class UserAdapter(val c:Context,val userList:ArrayList<UserData>):RecyclerView.A
               when(it.itemId){
                   R.id.editText->{
                       val v = LayoutInflater.from(c).inflate(R.layout.add_item,null)
-                      val name = v.findViewById<EditText>(R.id.calorie)
-                      val number = v.findViewById<EditText>(R.id.foodKind)
-                              AlertDialog.Builder(c)
+                      val calorie = v.findViewById<EditText>(R.id.calorie)
+                      val foodKind = v.findViewById<EditText>(R.id.foodKind)
+                      val foodInfo = v.findViewById<EditText>(R.id.foodInfo)
+
+                      AlertDialog.Builder(c)
                                       .setView(v)
                                       .setPositiveButton("Ok"){
                                           dialog,_->
-                                          position.calorie = name.text.toString()
-                                          position.foodKind = number.text.toString()
+                                          position.calorie = calorie.text.toString()
+                                          position.foodKind = foodKind.text.toString()
+                                          position.foodInfo = foodInfo.text.toString()
                                           notifyDataSetChanged()
                                           Toast.makeText(c,"User Information is Edited",Toast.LENGTH_SHORT).show()
                                           dialog.dismiss()

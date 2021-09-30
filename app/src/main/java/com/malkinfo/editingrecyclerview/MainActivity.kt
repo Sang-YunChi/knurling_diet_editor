@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         addDialog.setView(v)
         addDialog.setPositiveButton("Ok"){
             dialog,_->
-            val calories = foodName.text.toString()
+            val calories = foodName.text.toString().toInt() ?: 0
             val foodKinds = foodKind.text.toString()
             val foodInfos = foodInfo.text.toString()
             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmm").format(Date())
@@ -88,13 +88,14 @@ class MainActivity : AppCompatActivity() {
             userAdapter.notifyDataSetChanged()
 
             val data = hashMapOf(
-                "calories" to calories.toString(),
-                "foodKinds" to foodKinds.toString(),
-                "foodInfos" to foodInfos.toString(),
+                "calories" to calories,
+                "foodKinds" to foodKinds,
+                "foodInfos" to foodInfos,
                 "time" to timeStamp.toString()
             )
 
-            myRef.push().setValue(data)
+            myRef.push().setValue(data) // 리얼타임 데이터베이스에 식단 데이터 추가.
+
             Toast.makeText(this,"Adding Food Information Success",Toast.LENGTH_SHORT).show()
             dialog.dismiss()
 
